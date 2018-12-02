@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23363588698530370}
   - component: {fileID: 136732008560887808}
   - component: {fileID: 114126656551761756}
-  - component: {fileID: 122583072860921302}
+  - component: {fileID: 122162393368601314}
   m_Layer: 0
   m_Name: Fountain
   m_TagString: Untagged
@@ -198,8 +198,10 @@ MonoBehaviour:
   Height: 1.2
   speed: 2
   Color: {r: 0, g: 0, b: 0, a: 0}
+  SpotLight: {fileID: 108677228973130022}
   Water: {fileID: 198060058404681236}
---- !u!122 &122583072860921302
+  delay: 0
+--- !u!122 &122162393368601314
 Halo:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,8 +210,8 @@ Halo:
   m_Enabled: 0
   m_Color:
     serializedVersion: 2
-    rgba: 4278220408
-  m_Size: 2.35
+    rgba: 4280220415
+  m_Size: 2.5
 --- !u!136 &136732008560887808
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -302,7 +304,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2

@@ -13,7 +13,11 @@ public class FountainManager : MonoBehaviour {
     public Slider RedSlider;
     public Slider GreenSlider;
     public Slider BlueSlider;
+    public InputField Delay;
 
+
+    [SerializeField]
+    private List<float> testTime = new List<float>();
     // Use this for initialization
     void Start () {
 		
@@ -45,12 +49,17 @@ public class FountainManager : MonoBehaviour {
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
-                //FountainList.Clear();
+                foreach(GameObject fountain in FountainList)
+                {
+                    Behaviour halo = (Behaviour)fountain.GetComponent("Halo");
+                    halo.enabled = false;
+                }
+                FountainList.Clear();
             }
         }
-	}
+    }
 
     public void DeactivatePanel()
     {
@@ -76,6 +85,18 @@ public class FountainManager : MonoBehaviour {
             foreach (GameObject fountain in FountainList)
             {
                 fountain.GetComponent<Fountain>().AdjustHeight(HeightSlider.value);
+            }
+        }
+    }
+
+    public void SetDelays()
+    {
+        if (FountainList != null && FountainList.Count > 0)
+        {
+            FountainList[0].GetComponent<Fountain>().delay = 0;
+            for (int i=1; i<FountainList.Count; i++)
+            {
+                FountainList[i].GetComponent<Fountain>().delay = FountainList[i-1].GetComponent<Fountain>().delay + float.Parse(Delay.text);
             }
         }
     }
