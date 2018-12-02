@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FountainManager : MonoBehaviour {
 
-    public GameObject currentFountain;
+    public List<GameObject> FountainList;
     public Camera camera;
 
     public GameObject PropertiesPanel;
@@ -28,11 +28,26 @@ public class FountainManager : MonoBehaviour {
         {
             GameObject clickedObject = hit.transform.gameObject;
 
-            if(clickedObject.GetComponent<Fountain>() != null && Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && clickedObject.GetComponent<Fountain>() != null && !FountainList.Contains(clickedObject))
             {
                 Debug.Log("Fountain!");
-                currentFountain = clickedObject;
+                Behaviour halo = (Behaviour)clickedObject.GetComponent("Halo");
+                halo.enabled = true;
+                FountainList.Add(clickedObject);
                 PropertiesPanel.SetActive(true);
+            }
+            else if (Input.GetMouseButtonDown(0) && FountainList.Contains(clickedObject))
+            {
+                FountainList.Remove(clickedObject);
+                Behaviour halo = (Behaviour)clickedObject.GetComponent("Halo");
+                halo.enabled = false;
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                //FountainList.Clear();
             }
         }
 	}
@@ -40,16 +55,28 @@ public class FountainManager : MonoBehaviour {
     public void DeactivatePanel()
     {
         PropertiesPanel.SetActive(false);
-        currentFountain = null;
+        FountainList = null;
     }
 
     public void EditFountainColor()
     {
-        if(currentFountain != null) currentFountain.GetComponent<Fountain>().ChangeColor(RedSlider.value, GreenSlider.value, BlueSlider.value);
+        if (FountainList != null)
+        {
+            foreach (GameObject fountain in FountainList)
+            {
+                fountain.GetComponent<Fountain>().ChangeColor(RedSlider.value, GreenSlider.value, BlueSlider.value);
+            }
+        }
     }
 
     public void EditFountainHeight()
     {
-        if (currentFountain != null) currentFountain.GetComponent<Fountain>().AdjustHeight(HeightSlider.value);
+        if (FountainList != null)
+        {
+            foreach (GameObject fountain in FountainList)
+            {
+                fountain.GetComponent<Fountain>().AdjustHeight(HeightSlider.value);
+            }
+        }
     }
 }
