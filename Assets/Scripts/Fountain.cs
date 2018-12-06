@@ -25,7 +25,7 @@ public class Fountain : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Water.startSpeed = 4.4f * Height * Mathf.Sin(Time.time / speed) + Height * 8f;
-        Water.startSpeed = PatternFunctions.SinWave(Height, speed, delay);
+        Water.startSpeed = PatternFunctions.SinWave(Height, speed, delay); 
         //Water.startSpeed = PatternFunctions.VShape(Height, speed, delay);
 
 
