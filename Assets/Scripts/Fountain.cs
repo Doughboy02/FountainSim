@@ -9,7 +9,7 @@ public class Fountain : MonoBehaviour {
     //public float Height;
     //public float speed;
 
-    public float NozzleRadius;
+    public float Diameter;
     public float Velocity;
     public float MaxFlowRate;
     public float MaxPressure;
@@ -29,7 +29,7 @@ public class Fountain : MonoBehaviour {
     // Use this for initialization
     void Start () {
         var shape = Water.shape;
-        shape.radius = NozzleRadius;
+        shape.radius = Diameter;
     }
 	
 	// Update is called once per frame
@@ -38,15 +38,15 @@ public class Fountain : MonoBehaviour {
         //Water.startSpeed = PatternFunctions.SinWave(Height, speed, delay);
         //Water.startSpeed = PatternFunctions.VShape(Height, speed, delay);
 
-        Velocity = Mathf.Sqrt((2* Mathf.Pow(MaxFlowRate, 2) * MaxPressure) / (WaterDensity * Mathf.Pow(MaxFlowRate, 2) + 2 * MaxPressure * Mathf.Pow(Mathf.PI, 2) * Mathf.Pow(NozzleRadius, 4)));
+        Velocity = Mathf.Sqrt((Mathf.Pow(MaxFlowRate, 2) * MaxPressure * 135.1473154f) / ((2122089428f * Mathf.Pow(Diameter, 4) * MaxPressure + (Mathf.Pow(MaxFlowRate, 2) ))* Mathf.Pow(Mathf.PI, 2)));
         Water.startSpeed = Velocity;
 
 
     }
 
-    public void AdjustHeight(float nozzleRadius)
+    public void AdjustHeight(float diameter)
     {
-        NozzleRadius = nozzleRadius;
+        Diameter = diameter;
     }
 
     public void ChangeColor(float red, float green, float blue)
