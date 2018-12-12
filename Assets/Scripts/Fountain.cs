@@ -9,6 +9,7 @@ public class Fountain : MonoBehaviour {
     //public float Height;
     //public float speed;
 
+    public float VelocityPercentage;
     public float Diameter;
     public float Velocity;
     public float MaxFlowRate;
@@ -39,14 +40,14 @@ public class Fountain : MonoBehaviour {
         //Water.startSpeed = PatternFunctions.VShape(Height, speed, delay);
 
         Velocity = Mathf.Sqrt((Mathf.Pow(MaxFlowRate, 2) * MaxPressure * 135.1473154f) / ((2122089428f * Mathf.Pow(Diameter, 4) * MaxPressure + (Mathf.Pow(MaxFlowRate, 2) ))* Mathf.Pow(Mathf.PI, 2)));
-        Water.startSpeed = Velocity;
+        Water.startSpeed = Velocity * VelocityPercentage;
 
 
     }
 
-    public void AdjustHeight(float diameter)
+    public void AdjustHeight(float percent)
     {
-        Diameter = diameter;
+        VelocityPercentage = percent;
     }
 
     public void ChangeColor(float red, float green, float blue)
