@@ -52,6 +52,7 @@ public class LayoutManager : MonoBehaviour {
 
             case "Circle":
                 CreateLayout.onClick.AddListener(delegate { DrawCircle(); });
+                SetVisibility(false, false, true, true);
                 break;
 
             case "Arc":
@@ -66,7 +67,7 @@ public class LayoutManager : MonoBehaviour {
     {
         print("Draw Line");
         ClearFountainList();
-        for(int i=0; i< int.Parse(ColumnsInput.text); i++)
+        for(int i=0; i < int.Parse(ColumnsInput.text); i++)
         {
             GameObject newFountain = Instantiate(FountainParent);
             newFountain.transform.position = new Vector3(StartMarker.transform.position.x + i * float.Parse(ColumnSpacingInput.text), 0, StartMarker.transform.position.z);
@@ -92,6 +93,13 @@ public class LayoutManager : MonoBehaviour {
     public void DrawCircle()
     {
         print("Draw Circle");
+        ClearFountainList();
+        for (int i = 1; i <= int.Parse(ColumnsInput.text); i++)
+        {
+            GameObject newFountain = Instantiate(FountainParent);
+            newFountain.transform.position = new Vector3(StartMarker.transform.parent.position.x + Mathf.Cos(Mathf.PI * 2 / int.Parse(ColumnsInput.text)*i) * float.Parse(ColumnSpacingInput.text), 0, StartMarker.transform.parent.position.z + Mathf.Sin(Mathf.PI * 2 / int.Parse(ColumnsInput.text)*i) * float.Parse(ColumnSpacingInput.text));
+            FountainList.Add(newFountain);
+        }
     }
 
     public void DrawArc()
