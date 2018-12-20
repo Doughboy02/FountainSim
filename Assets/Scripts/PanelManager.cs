@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PanelManager : MonoBehaviour {
 
-    public GameObject DevicesPanel;
+    public GameObject DevicesOptionsPanel;
     public GameObject LayoutPanel;
+    public GameObject DeviceListPanel;
     public Camera TopDownCam;
     public Camera MainCamera;
 
@@ -23,8 +24,9 @@ public class PanelManager : MonoBehaviour {
     {
         MainCamera.gameObject.SetActive(true);
         TopDownCam.gameObject.SetActive(true);
-        DevicesPanel.gameObject.SetActive(true);
+        DevicesOptionsPanel.gameObject.SetActive(true);
         LayoutPanel.gameObject.SetActive(false);
+        DeviceListPanel.gameObject.SetActive(false);
         TopDownCam.rect = new Rect(0, .3f, .4f, .7f);
         MainCamera.rect = new Rect(.4f, .3f, .6f, .7f);
     }
@@ -33,8 +35,9 @@ public class PanelManager : MonoBehaviour {
     {
         MainCamera.gameObject.SetActive(false);
         TopDownCam.gameObject.SetActive(true);
-        DevicesPanel.gameObject.SetActive(false);
+        DevicesOptionsPanel.gameObject.SetActive(false);
         LayoutPanel.gameObject.SetActive(true);
+        DeviceListPanel.gameObject.SetActive(true);
         TopDownCam.rect = new Rect(0, .3f, .8f, .7f);
         MainCamera.rect = new Rect(0, 0, 0, 0);
     }
