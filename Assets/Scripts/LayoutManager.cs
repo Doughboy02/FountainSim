@@ -67,7 +67,7 @@ public class LayoutManager : MonoBehaviour {
 
             case "Arc":
                 CreateLayout.onClick.AddListener(delegate { DrawArc(); });
-                SetVisibility(true, true, false, false, true, true, true, true, false, false, false, false, false);
+                SetVisibility(true, true, false, false, true, true, true, true, false, false, false, false, true);
                 break;
         }
 
@@ -78,17 +78,13 @@ public class LayoutManager : MonoBehaviour {
     {
         print("Draw Line");
         ClearFountainList();
-        //float Xslope = (float.Parse(X2Input.text) - float.Parse(X1Input.text)) / int.Parse(DeviceAmountInput.text);
-        //float Zslope = (float.Parse(Y2Input.text) - float.Parse(Y1Input.text)) / int.Parse(DeviceAmountInput.text);
         float Xslope = (float.Parse(X2Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
         float Zslope = (float.Parse(Y2Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
-        //float slope = (float.Parse(Y2Input.text) - float.Parse(Y1Input.text)) / (float.Parse(X2Input.text) - float.Parse(X1Input.text));
 
         for (int i=0; i < int.Parse(DeviceAmountInput.text); i++)
         {
             GameObject newFountain = Instantiate(FountainParent);
             newFountain.transform.position = new Vector3(CamOrigin.position.x + float.Parse(X1Input.text) + i * Xslope, 0, CamOrigin.position.z + float.Parse(Y1Input.text) + i * Zslope);
-            //newFountain.transform.position = new Vector3(CamOrigin.transform.position.x + float.Parse(X1Input.text) + i * slope/ int.Parse(DeviceAmountInput.text), 0, CamOrigin.transform.position.z + float.Parse(Y1Input.text) + i * slope/int.Parse(DeviceAmountInput.text));
             FountainList.Add(newFountain);
         }
     }
@@ -112,10 +108,10 @@ public class LayoutManager : MonoBehaviour {
     {
         print("Draw Circle");
         ClearFountainList();
-        for (int i = 1; i <= int.Parse(ColumnsInput.text); i++)
+        for (int i = 1; i <= int.Parse(DeviceAmountInput.text); i++)
         {
             GameObject newFountain = Instantiate(FountainParent);
-            //newFountain.transform.position = new Vector3(StartMarker.transform.parent.position.x + Mathf.Cos(Mathf.PI * 2 / int.Parse(ColumnsInput.text)*i) * float.Parse(ColumnSpacingInput.text), 0, StartMarker.transform.parent.position.z + Mathf.Sin(Mathf.PI * 2 / int.Parse(ColumnsInput.text)*i) * float.Parse(ColumnSpacingInput.text));
+            newFountain.transform.position = new Vector3(CamOrigin.position.x + Mathf.Cos(Mathf.PI * 2 / int.Parse(DeviceAmountInput.text)*i + Mathf.PI * float.Parse(AngleInput.text) / 180) * float.Parse(RadiusSpacingInput.text), 0, CamOrigin.position.z + Mathf.Sin(Mathf.PI * 2 / int.Parse(DeviceAmountInput.text)* i + Mathf.PI * float.Parse(AngleInput.text) / 180) * float.Parse(RadiusSpacingInput.text));
             FountainList.Add(newFountain);
         }
     }
@@ -123,6 +119,33 @@ public class LayoutManager : MonoBehaviour {
     public void DrawArc()
     {
         print("Draw Arc");
+
+        float width = float.Parse(WidthInput.text);
+        float height = float.Parse(HeightInput.text);
+        float radius = float.Parse(RadiusSpacingInput.text);
+        float angle = float.Parse(AngleInput.text);
+        float x = float.Parse(X1Input.text);
+        float y = float.Parse(Y1Input.text);
+        int deviceAmount = int.Parse(DeviceAmountInput.text);
+
+        float r = Mathf.Pow(width, 2) / (8 * height) + (height / 2);
+        float T;
+
+        ClearFountainList();
+        for (int i = 1; i <= int.Parse(DeviceAmountInput.text); i++)
+        {
+            GameObject newFountain = Instantiate(FountainParent);
+            T = Mathf.PI;
+            T = T - Mathf.Acos(width / (2 * r));
+            T = T + angle * Mathf.PI / 180;
+            T = T - (Mathf.PI - 2 * Mathf.Acos(width / (2 * r))) / deviceAmount * i;
+
+            //T = Mathf.PI - Mathf.Acos(width / 2 * radius) + angle * Mathf.PI / 180 - (Mathf.PI - 2 * Mathf.Acos(width / 2 * radius)) / deviceAmount * i;
+            print(T);
+            newFountain.transform.position = new Vector3(CamOrigin.position.x + radius * Mathf.Cos(T) + x + radius * Mathf.Sin(angle * Mathf.PI / 180), 0, CamOrigin.position.z + radius * Mathf.Sin(T) + y - radius * Mathf.Cos(angle * Mathf.PI / 180));
+            FountainList.Add(newFountain);
+        }
+
     }
 
     public void ClearFountainList()
