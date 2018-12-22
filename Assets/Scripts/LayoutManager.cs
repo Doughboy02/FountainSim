@@ -138,11 +138,11 @@ public class LayoutManager : MonoBehaviour {
             T = Mathf.PI;
             T = T - Mathf.Acos(width / (2 * r));
             T = T + angle * Mathf.PI / 180;
-            T = T - (Mathf.PI - 2 * Mathf.Acos(width / (2 * r))) / deviceAmount * i;
+            T = T - (Mathf.PI - 2 * Mathf.Acos(width / (2 * r))) / (deviceAmount + 1) * i;
 
             //T = Mathf.PI - Mathf.Acos(width / 2 * radius) + angle * Mathf.PI / 180 - (Mathf.PI - 2 * Mathf.Acos(width / 2 * radius)) / deviceAmount * i;
             print(T);
-            newFountain.transform.position = new Vector3(CamOrigin.position.x + radius * Mathf.Cos(T) + x + radius * Mathf.Sin(angle * Mathf.PI / 180), 0, CamOrigin.position.z + radius * Mathf.Sin(T) + y - radius * Mathf.Cos(angle * Mathf.PI / 180));
+            newFountain.transform.position = new Vector3(CamOrigin.position.x + r * Mathf.Cos(T) + x + r * Mathf.Sin(angle * Mathf.PI / 180), 0, CamOrigin.position.z + r * Mathf.Sin(T) + y - r * Mathf.Cos(angle * Mathf.PI / 180));
             FountainList.Add(newFountain);
         }
 
