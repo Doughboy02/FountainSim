@@ -67,7 +67,7 @@ public class LayoutManager : MonoBehaviour {
 
             case "Arc":
                 CreateLayout.onClick.AddListener(delegate { DrawArc(); });
-                SetVisibility(true, true, false, false, true, true, true, true, false, false, false, false, true);
+                SetVisibility(true, true, false, false, true, true, true, true, false, false, false, false, false);
                 break;
         }
 
@@ -122,7 +122,6 @@ public class LayoutManager : MonoBehaviour {
 
         float width = float.Parse(WidthInput.text);
         float height = float.Parse(HeightInput.text);
-        float radius = float.Parse(RadiusSpacingInput.text);
         float angle = float.Parse(AngleInput.text);
         float x = float.Parse(X1Input.text);
         float y = float.Parse(Y1Input.text);
@@ -135,12 +134,7 @@ public class LayoutManager : MonoBehaviour {
         for (int i = 1; i <= int.Parse(DeviceAmountInput.text); i++)
         {
             GameObject newFountain = Instantiate(FountainParent);
-            T = Mathf.PI;
-            T = T - Mathf.Acos(width / (2 * r));
-            T = T + angle * Mathf.PI / 180;
-            T = T - (Mathf.PI - 2 * Mathf.Acos(width / (2 * r))) / (deviceAmount + 1) * i;
-
-            //T = Mathf.PI - Mathf.Acos(width / 2 * radius) + angle * Mathf.PI / 180 - (Mathf.PI - 2 * Mathf.Acos(width / 2 * radius)) / deviceAmount * i;
+            T = Mathf.PI - Mathf.Acos(width / (2 * r)) + angle * Mathf.PI / 180 - (Mathf.PI - 2 * Mathf.Acos(width / (2 * r))) / (deviceAmount + 1)* i;
             print(T);
             newFountain.transform.position = new Vector3(CamOrigin.position.x + r * Mathf.Cos(T) + x + r * Mathf.Sin(angle * Mathf.PI / 180), 0, CamOrigin.position.z + r * Mathf.Sin(T) + y - r * Mathf.Cos(angle * Mathf.PI / 180));
             FountainList.Add(newFountain);

@@ -9,6 +9,7 @@ public class PanelManager : MonoBehaviour {
     public GameObject DeviceListPanel;
     public Camera TopDownCam;
     public Camera MainCamera;
+    public CameraManager CameraManager;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,7 @@ public class PanelManager : MonoBehaviour {
         DeviceListPanel.gameObject.SetActive(false);
         TopDownCam.rect = new Rect(0, .3f, .4f, .7f);
         MainCamera.rect = new Rect(.4f, .3f, .6f, .7f);
+        CameraManager.SwitchCam(true);
     }
 
     public void Layout()
@@ -40,5 +42,6 @@ public class PanelManager : MonoBehaviour {
         DeviceListPanel.gameObject.SetActive(true);
         TopDownCam.rect = new Rect(0, .3f, .8f, .7f);
         MainCamera.rect = new Rect(0, 0, 0, 0);
+        CameraManager.SwitchCam(false);
     }
 }
