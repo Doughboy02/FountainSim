@@ -32,26 +32,38 @@ public class FountainManager : MonoBehaviour {
         {
             GameObject clickedObject = hit.transform.gameObject;
 
-            if(Input.GetMouseButtonDown(0) && clickedObject.GetComponent<Fountain>() != null && !FountainList.Contains(clickedObject))
+
+            if (Input.GetMouseButtonDown(0) && clickedObject.GetComponent<Fountain>() != null)
             {
                 Debug.Log("Fountain!");
                 Behaviour halo = (Behaviour)clickedObject.GetComponent("Halo");
-                halo.enabled = true;
+
+                if (FountainList.Contains(clickedObject))
+                {
+                    FountainList.Remove(clickedObject);
+                    halo.enabled = false;
+                }
+
+                if (Input.GetKey(KeyCode.LeftControl) && !FountainList.Contains(clickedObject))
+                {
+                    FountainList.Add(clickedObject);
+                    return;
+                }
+
+                foreach (GameObject fountain in FountainList)
+                {
+                    halo = (Behaviour)fountain.GetComponent("Halo");
+                    halo.enabled = false;
+                }
+
+                FountainList.Clear();
                 FountainList.Add(clickedObject);
+                halo.enabled = true;
                 PropertiesPanel.SetActive(true);
             }
-            else if (Input.GetMouseButtonDown(0) && FountainList.Contains(clickedObject))
+            else if(Input.GetMouseButtonDown(0) && clickedObject.GetComponent<Fountain>() == null)
             {
-                FountainList.Remove(clickedObject);
-                Behaviour halo = (Behaviour)clickedObject.GetComponent("Halo");
-                halo.enabled = false;
-            }
-        }
-        else
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                foreach(GameObject fountain in FountainList)
+                foreach (GameObject fountain in FountainList)
                 {
                     Behaviour halo = (Behaviour)fountain.GetComponent("Halo");
                     halo.enabled = false;
