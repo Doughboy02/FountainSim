@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 123973448}
   - component: {fileID: 123973447}
   m_Layer: 5
-  m_Name: View
+  m_Name: DevicesBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 194700238}
   - component: {fileID: 194700237}
   m_Layer: 5
-  m_Name: DevicesPanel
+  m_Name: ViewPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3102,7 +3102,7 @@ GameObject:
   - component: {fileID: 631904565}
   - component: {fileID: 631904564}
   m_Layer: 5
-  m_Name: DeviceEditor
+  m_Name: ViewBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5418,7 +5418,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Devices
+  m_Text: View
 --- !u!222 &1059684376
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7688,7 +7688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: View
+  m_Text: Devices
 --- !u!222 &1638322638
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8110,10 +8110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a215ccbfde7d1458998af0092404c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 446199395}
-  TopDownCamera: {fileID: 537005567}
+  MainCamera: {fileID: 446199397}
+  TopDownCamera: {fileID: 537005570}
   MoveSnap: 5
-  MoveSpeed: 0
+  MoveSpeed: 10
 --- !u!4 &1725415205
 Transform:
   m_ObjectHideFlags: 0
@@ -8214,7 +8214,7 @@ GameObject:
   - component: {fileID: 1750477920}
   - component: {fileID: 1750477919}
   m_Layer: 5
-  m_Name: Layout
+  m_Name: LayoutBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
