@@ -78,8 +78,8 @@ public class LayoutManager : MonoBehaviour {
     {
         print("Draw Line");
         ClearFountainList();
-        float Xslope = (float.Parse(X2Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
-        float Zslope = (float.Parse(Y2Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
+        float Xslope = (float.Parse(X2Input.text) - float.Parse(X1Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
+        float Zslope = (float.Parse(Y2Input.text) - float.Parse(X1Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
 
         for (int i=0; i < int.Parse(DeviceAmountInput.text); i++)
         {
