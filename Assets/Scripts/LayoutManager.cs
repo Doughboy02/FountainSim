@@ -77,7 +77,7 @@ public class LayoutManager : MonoBehaviour {
     public void DrawLine()
     {
         print("Draw Line");
-        ClearFountainList();
+        //ClearFountainList();
         float Xslope = (float.Parse(X2Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
         float Zslope = (float.Parse(Y2Input.text)) / (int.Parse(DeviceAmountInput.text)-1);
 
@@ -92,7 +92,7 @@ public class LayoutManager : MonoBehaviour {
     public void DrawGrid()
     {
         print("Draw Grid");
-        ClearFountainList();
+        //ClearFountainList();
         for (int i=0; i < int.Parse(RowsInput.text); i++)
         {
             for (int j = 0; j < int.Parse(ColumnsInput.text); j++)
@@ -107,7 +107,7 @@ public class LayoutManager : MonoBehaviour {
     public void DrawCircle()
     {
         print("Draw Circle");
-        ClearFountainList();
+        //ClearFountainList();
         for (int i = 1; i <= int.Parse(DeviceAmountInput.text); i++)
         {
             GameObject newFountain = Instantiate(FountainParent);
@@ -130,7 +130,7 @@ public class LayoutManager : MonoBehaviour {
         float r = Mathf.Pow(width, 2) / (8 * height) + (height / 2);
         float T;
 
-        ClearFountainList();
+        //ClearFountainList();
         for (int i = 1; i <= int.Parse(DeviceAmountInput.text); i++)
         {
             GameObject newFountain = Instantiate(FountainParent);

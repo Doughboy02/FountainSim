@@ -21,7 +21,7 @@ public class PanelManager : MonoBehaviour {
 		
 	}
 
-    public void Devices()
+    public void View()
     {
         MainCamera.gameObject.SetActive(true);
         TopDownCam.gameObject.SetActive(true);
