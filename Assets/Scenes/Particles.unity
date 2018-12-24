@@ -8110,8 +8110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a215ccbfde7d1458998af0092404c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 446199395}
-  TopDownCamera: {fileID: 537005567}
+  MainCamera: {fileID: 446199397}
+  TopDownCamera: {fileID: 537005570}
   MoveSnap: 5
   MoveSpeed: 10
 --- !u!4 &1725415205

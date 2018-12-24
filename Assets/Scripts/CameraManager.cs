@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
 
-    public GameObject MainCamera;
-    public GameObject TopDownCamera;
+    public Camera MainCamera;
+    public Camera TopDownCamera;
 
     public int MoveSnap;
     public float MoveSpeed;
@@ -26,8 +26,22 @@ public class CameraManager : MonoBehaviour {
         else
         {
             MoveTopDownCam();
+
+            RaycastHit hit = new RaycastHit();
+            Ray ray = TopDownCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject clickedObject = hit.transform.gameObject;
+                Behaviour halo = (Behaviour)clickedObject.GetComponent("Halo");
+
+                if (Input.GetMouseButtonDown(1) && clickedObject.tag == "LayoutMarker")
+                {
+                    print("Editing : " + clickedObject.name);
+                }
+            }
         }
-	}
+    }
 
     public void SwitchCam(bool b)
     {
