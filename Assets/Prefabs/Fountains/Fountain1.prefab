@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114126656551761756}
   - component: {fileID: 122162393368601314}
   m_Layer: 0
-  m_Name: Fountain
+  m_Name: Fountain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,21 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50228ec5efec49240a18bc9d450a36e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocityPercentage: 1
-  Diameter: 0.009525
-  Velocity: 0
-  MaxFlowRate: 25
-  MaxPressure: 65
-  WaterDensity: 1000
-  Color: {r: 0.9150943, g: 0, b: 0, a: 0}
-  SpotLight: {fileID: 108677228973130022}
+  Pump: {fileID: 1154507003902186, guid: 483bd25481326ec43a1231e3871049b1, type: 2}
+  Nozzel: {fileID: 1154507003902186, guid: 0d37e39cee149a3408cc21d7c48e15c9, type: 2}
+  Light: {fileID: 1154507003902186, guid: c51e73e6c5852284680cffe809e200ad, type: 2}
   Water: {fileID: 198060058404681236}
   delay: 0
-  Pattern:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!122 &122162393368601314
 Halo:
   m_ObjectHideFlags: 1
